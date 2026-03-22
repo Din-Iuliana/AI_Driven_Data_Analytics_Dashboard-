@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "skills": {
+    "api-design": {
+      "source": "supercent-io/skills-template",
+      "sourceType": "github",
+      "computedHash": "30ba2419b18643073649dd8eccb9a845f8907751b7c8d6f77e29f014baf628e2"
+    },
+    "code-review": {
+      "source": "supercent-io/skills-template",
+      "sourceType": "github",
+      "computedHash": "199d2fcf315d17a4d6d96a0db7553f11a33ac291a861f93ba0ef5dd9fe1d67bf"
+    },
+    "docker-expert": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "e5556c606d3a64877877728f7b945bc189b694ead92ee4b76b475d4633f14d37"
+    },
+    "documentation-writer": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "computedHash": "ee53d65b163cd7eb953a930c95841cfe398cc2c0bd24c06508bbaa07c432be35"
+    },
+    "fastapi-templates": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "422bfb6972d6e3bbe4891ffcaad07bcdc328b2a08f9e89547b03c18394791454"
+    },
+    "git-commit": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "computedHash": "2607fc60629b82b257136dd2a7a373f0a4466c0b49df7746d845d59313c99b21"
+    },
+    "postgresql": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "454129ab88756362b730a92731aeaa318dc773042333c0ee14b9ee2f8e3ff026"
+    },
+    "python-testing-patterns": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "af7590b87e4094c2027be299ce5b0c315269af250ccdf76f4922b546e42009df"
+    },
+    "security-best-practices": {
+      "source": "supercent-io/skills-template",
+      "sourceType": "github",
+      "computedHash": "c5ddd50338549d28b2edd45cec131d6a231349b0671a093b3b7e3b51d4780ab8"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+Project Brief: AI-Driven Data Analytics Dashboard
+Obiectiv: Construirea unei platforme end-to-end care permite interogarea unei baze de date SQL folosind limbaj natural (via Grok AI API), cu vizualizare de date în timp real și documentare profesională.
+
+1. Stack-ul Tehnologic (Infrastructure-as-Code)
+Vom folosi Docker pentru a evita problemele de compatibilitate pe Windows. Tot proiectul va rula în containere izolate.
+
+Orchestrare: Docker Desktop (Docker Compose).
+
+Database: PostgreSQL 16 (Container dedicat).
+
+Backend Analitic: Python 3.11 (FastAPI) + Grok AI API (pentru conversia Text-to-SQL).
+
+Interfață Utilizator: PHP 8.2 (Apache) pentru Dashboard și logică de afișare.
+
+Vizualizare: Chart.js (Librărie JavaScript pentru grafice).
+
+Management: Jira (Task tracking) și Confluence (Documentație).
+
+2. Documentația și Planificarea (Săptămâna 1)
+Înainte de orice linie de cod, trebuie să pregătești terenul în Atlassian Cloud.
+
+În Confluence:
+Pagina "Arhitectură": Desenează fluxul datelor: User -> PHP -> Python (Grok) -> PostgreSQL -> Rezultat înapoi la PHP.
+
+Pagina "Data Schema": Definește tabelele pe care le vei folosi (ex: tabele de vânzări, clienți, produse).
+
+În Jira:
+Creează un proiect de tip Kanban și adaugă următoarele coloane: Backlog, In Progress, Review, Done.
+
+Epic 1: Infrastructură (Docker setup).
+
+Epic 2: Backend & AI Integration (Grok API).
+
+Epic 3: Frontend & Visualization (PHP & Charts).
+
+3. Ghid de Instalare (Pas cu Pas)
+Instalează Docker Desktop: Acesta este motorul care va rula tot. După instalare, asigură-te că e pornit.
+
+Instalează VS Code: Adaugă extensiile "Docker" și "Remote Containers".
+
+Configurare Docker Compose: Vei crea un fișier docker-compose.yml care va defini cele 3 servicii (PHP, Python, Postgres).
+
+Comanda magică: docker-compose up -d. Aceasta va instala automat PHP, Postgres și Python fără ca tu să faci nimic manual pe Windows.
+
+Instalează DBeaver: Îl vei folosi pentru a te conecta la baza de date din container și a vedea tabelele clar.
+
+4. Fluxul de Implementare (Săptămânile 2-4)
+Pasul A: Integrarea Grok AI (Python)
+Vei scrie un script Python care primește o întrebare (ex: "Cine sunt primii 5 clienți după volumul de cumpărături?") și o trimite către Grok API.
+
+Prompt Engineering: Îi vei spune lui Grok: "Ești un expert SQL. Returnează doar codul SQL pentru PostgreSQL bazat pe această structură de tabel: [Schema ta]...".
+
+Execuție: Python execută codul primit în baza de date și returnează datele brute către interfața PHP.
+
+Pasul B: Interfața și Graficele (PHP)
+Creează un formular de chat în PHP.
+
+Când primești datele de la Python, folosește Chart.js pentru a genera automat un grafic (Bar, Line sau Pie chart) în funcție de tipul de date.
+
+Pasul C: Optimizarea datelor cu AI
+Folosește AI-ul pentru a analiza performanța. Întreabă-l pe Grok: "Analizează acest query SQL și datele returnate. Cum pot optimiza indexarea în Postgres pentru a reduce timpul de răspuns?".
+
+5. Timeline Estimativ (4 Săptămâni)
+Săptămâna,Focus,Livrabil Principal
+S1,Setup & Arhitectură,Documentația în Confluence & Docker funcțional.
+S2,Data Science & AI,Integrarea Grok API și execuția de SQL din Python.
+S3,Web Development,Interfața PHP legată la Backend-ul de Python.
+S4,Vizualizare & Polish,Dashboard-ul cu grafice funcționale și testare finală.

@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker:*)",
+      "Bash(docker-compose:*)",
+      "Bash(docker compose:*)",
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(pip:*)",
+      "Bash(pip3:*)",
+      "Bash(php:*)",
+      "Bash(composer:*)",
+      "Bash(git:*)",
+      "Bash(mkdir:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(curl:*)",
+      "Bash(psql:*)",
+      "Bash(chmod:*)",
+      "Bash(touch:*)",
+      "Bash(npx:*)",
+      "WebSearch",
+      "Bash(git init:*)"
+    ]
+  },
+  "outputStyle": "Explanatory"
+}
