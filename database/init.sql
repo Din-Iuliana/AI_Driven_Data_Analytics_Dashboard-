@@ -1,22 +1,113 @@
 CREATE TABLE customers (
-      id SERIAL PRIMARY KEY,
-      name VARCHAR(100) NOT NULL,
-      email VARCHAR(100) NOT NULL UNIQUE,
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-  );
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-  CREATE TABLE products (
-      id SERIAL PRIMARY KEY,
-      name VARCHAR(100) NOT NULL,
-      price DECIMAL(10,2) NOT NULL,
-      category VARCHAR(50)
-  );
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    category VARCHAR(50)
+);
 
-  CREATE TABLE sales (
-      id SERIAL PRIMARY KEY,
-      customer_id INTEGER NOT NULL REFERENCES customers(id) ON DELETE CASCADE,
-      product_id INTEGER NOT NULL REFERENCES products(id) ON DELETE CASCADE,
-      quantity INTEGER NOT NULL,
-      sale_date DATE NOT NULL,
-      total_amount DECIMAL(10,2) NOT NULL
-  );
+CREATE TABLE sales (
+    id SERIAL PRIMARY KEY,
+    customer_id INTEGER NOT NULL REFERENCES customers(id) ON DELETE CASCADE,
+    product_id INTEGER NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+    quantity INTEGER NOT NULL,
+    sale_date DATE NOT NULL,
+    total_amount DECIMAL(10,2) NOT NULL
+);
+
+INSERT INTO customers (name, email, created_at) VALUES
+('Maria Popescu', 'maria.popescu@email.com', '2024-06-01'),
+('Ion Ionescu', 'ion.ionescu@email.com', '2024-06-15'),
+('Elena Dumitrescu', 'elena.dumitrescu@email.com', '2024-07-01'),
+('Andrei Popa', 'andrei.popa@email.com', '2024-07-10'),
+('Ana Georgescu', 'ana.georgescu@email.com', '2024-08-01'),
+('Mihai Stanescu', 'mihai.stanescu@email.com', '2024-08-15'),
+('Cristina Radu', 'cristina.radu@email.com', '2024-09-01'),
+('Alexandru Marin', 'alexandru.marin@email.com', '2024-09-10'),
+('Diana Florea', 'diana.florea@email.com', '2024-10-01'),
+('Stefan Nistor', 'stefan.nistor@email.com', '2024-10-15'),
+('Laura Dinu', 'laura.dinu@email.com', '2024-11-01'),
+('Gabriel Stoica', 'gabriel.stoica@email.com', '2024-11-10'),
+('Adriana Matei', 'adriana.matei@email.com', '2024-12-01'),
+('Bogdan Vlad', 'bogdan.vlad@email.com', '2024-12-15'),
+('Simona Dragomir', 'simona.dragomir@email.com', '2025-01-01'),
+('Catalin Neagu', 'catalin.neagu@email.com', '2025-01-10'),
+('Raluca Ene', 'raluca.ene@email.com', '2025-02-01'),
+('Dan Moldovan', 'dan.moldovan@email.com', '2025-02-15'),
+('Ioana Serban', 'ioana.serban@email.com', '2025-03-01'),
+('Victor Lazar', 'victor.lazar@email.com', '2025-03-10');
+
+INSERT INTO products (name, price, category) VALUES
+('Laptop Pro', 4500.00, 'Electronics'),
+('Laptop Basic', 2500.00, 'Electronics'),
+('Monitor 27 inch', 1200.00, 'Electronics'),
+('Monitor 24 inch', 800.00, 'Electronics'),
+('Wireless Mouse', 50.00, 'Accessories'),
+('Mechanical Keyboard', 350.00, 'Accessories'),
+('USB-C Hub', 150.00, 'Accessories'),
+('Office Desk', 900.00, 'Furniture'),
+('Ergonomic Chair', 1500.00, 'Furniture'),
+('Desk Lamp', 120.00, 'Furniture'),
+('Webcam HD', 200.00, 'Electronics'),
+('Headphones', 300.00, 'Accessories'),
+('External SSD 1TB', 400.00, 'Electronics'),
+('Printer', 600.00, 'Electronics'),
+('Notebook Stand', 180.00, 'Accessories');
+
+INSERT INTO sales (customer_id, product_id, quantity, sale_date, total_amount) VALUES
+(1, 1, 1, '2024-07-10', 4500.00),
+(1, 5, 2, '2024-07-10', 100.00),
+(1, 6, 1, '2024-09-15', 350.00),
+(2, 2, 1, '2024-08-05', 2500.00),
+(2, 3, 1, '2024-08-05', 1200.00),
+(2, 12, 1, '2024-10-20', 300.00),
+(3, 8, 2, '2024-09-01', 1800.00),
+(3, 9, 2, '2024-09-01', 3000.00),
+(3, 10, 3, '2024-11-10', 360.00),
+(4, 1, 1, '2024-09-15', 4500.00),
+(4, 7, 2, '2024-09-15', 300.00),
+(4, 11, 1, '2024-12-01', 200.00),
+(5, 4, 2, '2024-10-01', 1600.00),
+(5, 5, 3, '2024-10-01', 150.00),
+(5, 13, 1, '2024-12-15', 400.00),
+(6, 2, 1, '2024-10-10', 2500.00),
+(6, 6, 1, '2024-10-10', 350.00),
+(6, 14, 1, '2025-01-20', 600.00),
+(7, 3, 1, '2024-11-05', 1200.00),
+(7, 5, 1, '2024-11-05', 50.00),
+(7, 9, 1, '2025-01-15', 1500.00),
+(8, 1, 1, '2024-11-15', 4500.00),
+(8, 12, 2, '2024-11-15', 600.00),
+(8, 15, 1, '2025-02-10', 180.00),
+(9, 8, 1, '2024-12-01', 900.00),
+(9, 10, 2, '2024-12-01', 240.00),
+(9, 13, 2, '2025-02-20', 800.00),
+(10, 2, 1, '2024-12-10', 2500.00),
+(10, 4, 1, '2024-12-10', 800.00),
+(10, 11, 1, '2025-03-05', 200.00),
+(11, 1, 1, '2025-01-05', 4500.00),
+(11, 6, 2, '2025-01-05', 700.00),
+(12, 3, 2, '2025-01-15', 2400.00),
+(12, 7, 3, '2025-01-15', 450.00),
+(13, 9, 1, '2025-02-01', 1500.00),
+(13, 5, 4, '2025-02-01', 200.00),
+(14, 14, 2, '2025-02-10', 1200.00),
+(14, 15, 1, '2025-02-10', 180.00),
+(15, 1, 1, '2025-03-01', 4500.00),
+(15, 12, 1, '2025-03-01', 300.00),
+(16, 2, 1, '2025-03-05', 2500.00),
+(16, 13, 2, '2025-03-05', 800.00),
+(17, 8, 1, '2025-03-10', 900.00),
+(17, 10, 1, '2025-03-10', 120.00),
+(18, 4, 2, '2025-03-15', 1600.00),
+(18, 6, 1, '2025-03-15', 350.00),
+(19, 11, 2, '2025-03-20', 400.00),
+(19, 5, 2, '2025-03-20', 100.00),
+(20, 1, 1, '2025-03-25', 4500.00),
+(20, 9, 1, '2025-03-25', 1500.00);

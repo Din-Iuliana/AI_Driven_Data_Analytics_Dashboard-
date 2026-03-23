@@ -23,6 +23,7 @@
         - postgresql
       environment:
         DATABASE_URL: ${DATABASE_URL}
+        GROK_API_KEY: ${GROK_API_KEY}
 
     php:
       build: ./frontend
