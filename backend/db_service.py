@@ -2,11 +2,9 @@ import os
 import psycopg2
 
 def get_connection():
-    """Create and return a connection to PostgreSQL."""
     return psycopg2.connect(os.getenv("DATABASE_URL"))
 
 def execute_query(sql):
-    """Execute a SQL query and return the results as a list of dictionaries."""
     conn = get_connection()
     try:
         cur = conn.cursor()

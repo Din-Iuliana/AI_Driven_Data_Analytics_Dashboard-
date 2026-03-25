@@ -16,12 +16,10 @@ app.add_middleware(
 
 @app.get("/")
 def root():
-    """Health check endpoint - confirms the backend is running."""
     return {"status": "Backend is running"}
 
 @app.post("/api/query")
 def query(data: dict):
-    """Receive a question, convert to SQL via Grok, execute on database, return results."""
     question = data.get("question", "")
 
     if not question:

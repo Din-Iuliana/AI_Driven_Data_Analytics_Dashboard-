@@ -33,7 +33,6 @@ Rules:
 - Always use valid PostgreSQL syntax."""
 
 def question_to_sql(question):
-    """Send a natural language question to Grok AI and return the SQL query."""
     api_key = os.getenv("GROK_API_KEY")
 
     headers = {
