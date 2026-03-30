@@ -1,8 +1,5 @@
-  /* Main stylesheet for AI Data Analytics Dashboard */                                                                                                                                                        
-
-  * {
-      margin: 0;
-      padding: 0;
+  * {                                                                                                                                                                                                                margin: 0;                                                                                                                                                                                               
+      padding: 0;                                                                                                                                                                                              
       box-sizing: border-box;
   }
 
@@ -86,4 +83,55 @@
       overflow-x: auto;
       font-size: 0.9em;
       line-height: 1.5;
+  }
+
+  table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      border: 2px solid #555;
+  }
+
+  th {
+      background-color: #0f3460;
+      color: #00d4ff;
+      padding: 10px 15px;
+      text-align: left;
+      font-weight: bold;
+      border: 2px solid #555;
+  }
+
+  td {
+      padding: 10px 15px;
+      border: 2px solid #555;
+  }
+
+  tr:hover {
+      background-color: #1f3a60;
+  }
+
+    #optimizeBtn {
+      padding: 10px 20px;
+      font-size: 0.95em;
+      background-color: #9966ff;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-bottom: 15px;
+  }
+
+  #optimizeBtn:hover {
+      background-color: #7a4fd4;
+  }
+
+  #optimizeResult pre {
+      background-color: #0f3460;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.85em;
+      line-height: 1.6;
+      white-space: pre-wrap;
   }

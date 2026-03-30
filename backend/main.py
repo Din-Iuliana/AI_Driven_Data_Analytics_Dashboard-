@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from grok_service import question_to_sql
+from grok_service import question_to_sql, analyze_query
 from db_service import execute_query
 import httpx
 import psycopg2
@@ -52,3 +52,17 @@ def query(data: dict):
         "sql": sql,
         "results": results
     }
+
+@app.post("/api/optimize")                                                                                                                                                                                   
+def optimize(data: dict):
+    sql = data.get("sql", "")                                                                                                                                                                                
+
+    if not sql:
+        return {"error": "No SQL query provided"}
+
+    try:
+        suggestion = analyze_query(sql)
+    except Exception as e:
+        return {"error": f"Optimization analysis failed: {str(e)}"}
+
+    return {"suggestion": suggestion}
