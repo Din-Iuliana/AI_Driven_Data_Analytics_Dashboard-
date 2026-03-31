@@ -8,7 +8,8 @@ You have access to the following database schema:
 
 Table: customers
 - id (SERIAL, PRIMARY KEY)
-- name (VARCHAR(100), NOT NULL)
+- first_name (VARCHAR(50), NOT NULL)
+- last_name (VARCHAR(50), NOT NULL)
 - email (VARCHAR(100), NOT NULL, UNIQUE)
 - created_at (TIMESTAMP, DEFAULT CURRENT_TIMESTAMP)
 
@@ -16,6 +17,7 @@ Table: products
 - id (SERIAL, PRIMARY KEY)
 - name (VARCHAR(100), NOT NULL)
 - price (DECIMAL(10,2), NOT NULL)
+- currency (VARCHAR(3), DEFAULT 'RON')
 - category (VARCHAR(50))
 Categories: Electronics, Accessories, Furniture, Gadgets, Supplies
 

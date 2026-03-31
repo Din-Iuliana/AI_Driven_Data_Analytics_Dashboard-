@@ -134,16 +134,15 @@ customers = []
 for i in range(500):
     first = random.choice(first_names)
     last = random.choice(last_names)
-    name = f"{first} {last}"
     email = f"{first.lower()}.{last.lower()}{i}@email.com"
     reg_offset = random.randint(0, int(total_days - 7))
     reg_date = start_date + timedelta(days=reg_offset)
-    customers.append((name, email, reg_date))
+    customers.append((first, last, email, reg_date))
 
 sales = []
 for i in range(1000):
     cust_index = random.randint(0, 499)
-    cust_reg_date = customers[cust_index][2]
+    cust_reg_date = customers[cust_index][3]
     days_available = (end_date - cust_reg_date).days
     if days_available < 1:
         days_available = 1
@@ -162,7 +161,8 @@ with open('database/init.sql', 'w') as f:
 
     f.write("""CREATE TABLE customers (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );\n\n""")
@@ -171,6 +171,7 @@ with open('database/init.sql', 'w') as f:
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
+    currency VARCHAR(3) DEFAULT 'RON',
     category VARCHAR(50)
 );\n\n""")
 
@@ -184,16 +185,16 @@ with open('database/init.sql', 'w') as f:
 );\n\n""")
 
     f.write("-- Customers (500)\n")
-    f.write("INSERT INTO customers (name, email, created_at) VALUES\n")
-    for i, (name, email, reg_date) in enumerate(customers):
+    f.write("INSERT INTO customers (first_name, last_name, email, created_at) VALUES\n")
+    for i, (first, last, email, reg_date) in enumerate(customers):
         comma = "," if i < len(customers) - 1 else ";"
-        f.write(f"('{name}', '{email}', '{reg_date}'){comma}\n")
+        f.write(f"('{first}', '{last}', '{email}', '{reg_date}'){comma}\n")
 
     f.write("\n-- Products (100)\n")
-    f.write("INSERT INTO products (name, price, category) VALUES\n")
+    f.write("INSERT INTO products (name, price, currency, category) VALUES\n")
     for i, (name, price, category) in enumerate(products):
         comma = "," if i < len(products) - 1 else ";"
-        f.write(f"('{name}', {price}, '{category}'){comma}\n")
+        f.write(f"('{name}', {price}, 'RON', '{category}'){comma}\n")
 
     f.write("\n-- Sales (1000)\n")
     f.write("INSERT INTO sales (customer_id, product_id, quantity, sale_date, total_amount) VALUES\n")
